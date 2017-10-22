@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Problend.Models.Product>
+
+@{
+    ViewBag.Title = "Продукти по клиенти";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Всички продукти на клиента</h2>
+
+    @if (User.IsInRole("Admin"))
+    {
+         <p>
+             @Html.ActionLink("Създай нов продукт", "Create", "Product")
+         </p>
+    }
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PackagePicturePath)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProductType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductBrand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RealPackageWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductNumber)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model.OrderBy(x => x.Client.Name).ThenBy(y => y.PaperType))
+    {
+        <tr>
+            <th>
+                <img src="~/Images/ProductPictures/@item.PackagePicturePath" alt="" width="170" />
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductBrand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RealPackageWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductNumber)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Детайли", "Details", "Product", new { id = item.Id }, null) |
+                     @if (User.IsInRole("Admin"))
+                     {
+                     @Html.ActionLink("Редактирай", "Edit", "Product", new { id = item.Id }, null)<span> | </span> @Html.ActionLink("Изтрий", "Delete", "Product", new { id = item.Id }, null)
+                     }
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Назад", "Index")
+</p>

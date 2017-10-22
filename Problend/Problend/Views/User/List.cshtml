@@ -1,0 +1,42 @@
+﻿@model List<Problend.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Всички потребители";
+}
+
+<div class="container">
+    <div class="well">
+        <h2>Потребители</h2>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Имейл</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    if (ViewBag.Admins.Contains(user.UserName))
+                    {
+                        @:<tr class="info">
+                    }
+                    else
+                    {
+                        @:<tr>
+                    }
+                  
+                    <td>@user.Email</td>
+                    <td>
+                        @Html.ActionLink("Редактирай", "Edit", "User", new { @id = user.Id }, null) | 
+                        @Html.ActionLink("Изтрий", "Delete", "User", new { @id = user.Id }, null)
+                    </td>
+                }
+
+                </tbody>
+        </table>
+    </div>
+</div>
+

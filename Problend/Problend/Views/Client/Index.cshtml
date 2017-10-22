@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Problend.Models.Client>
+
+@{
+    ViewBag.Title = "Всички клиенти";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Всички клиенти</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table">
+        @foreach (var item in Model.OrderBy(x=>x.Name))
+        {
+            string clientName = Html.DisplayFor(modelItem => item.Name).ToHtmlString();
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-group-justified"> @Html.ActionLink(clientName, "ProductsByClient", new { id = item.ClientId }) </button>
+                    @if (User.IsInRole("Admin"))
+                    {
+                    <div class="text-right">@Html.ActionLink("Редактирай", "Edit", new { id = item.ClientId })  @Html.ActionLink("Изтрий", "Delete", new { id = item.ClientId }) </div>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
+@if (User.IsInRole("Admin"))
+{
+<p>
+    @Html.ActionLink("Добави клиент", "Create")
+</p>
+}

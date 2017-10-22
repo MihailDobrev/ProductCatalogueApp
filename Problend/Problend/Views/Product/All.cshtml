@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Problend.Models.Product>
+
+@{
+    ViewBag.Title = "Всички продукти";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Всички продукти</h2>
+
+    @if (User.IsInRole("Admin"))
+    {
+         <p>
+             @Html.ActionLink("Създай нов продукт", "Create")
+         </p>
+    }
+<div class="text-center">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Търсене на продукт: @Html.TextBox("SearchString")
+            <input type="submit" value="Търсене" />
+        </p>
+    }
+</div>
+<table class="table text-center">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PackagePicturePath)
+        </th>
+
+        <th>
+
+            @Html.ActionLink(Html.DisplayNameFor(model => model.ProductType).ToHtmlString(),"All", new { sortOrder = ViewBag.ProductTypeSortParm })
+            
+        </th>
+        <th>
+            @Html.ActionLink(Html.DisplayNameFor(model => model.ProductBrand).ToHtmlString(), "All", new { sortOrder = ViewBag.ProductBrandSortParm })
+            
+        </th>
+        <th>
+            @Html.ActionLink(Html.DisplayNameFor(model => model.Client.Name).ToHtmlString(), "All", new { sortOrder = ViewBag.ClientNameSortParm })
+           
+        </th>
+        <th>
+            @Html.ActionLink(Html.DisplayNameFor(model => model.RealPackageWeight).ToHtmlString(), "All", new { sortOrder = ViewBag.RealPackageWeightSortParm })
+            
+        </th>
+        <th>
+            @Html.ActionLink(Html.DisplayNameFor(model => model.ProductNumber).ToHtmlString(), "All", new { sortOrder = ViewBag.ProductNumberSortParm })
+        </th>
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            <img src="~/Images/ProductPictures/@item.PackagePicturePath" alt="" width="170" />
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductBrand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RealPackageWeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductNumber)
+        </td>
+
+      
+        <td>
+            @Html.ActionLink("Детайли", "Details", new { id = item.Id }) <span> | </span>
+            @if (User.IsInRole("Admin") )
+                {
+            @Html.ActionLink("Редактирай", "Edit", new { id = item.Id })<span> | </span> @Html.ActionLink("Изтрий", "Delete", new { id=item.Id })
+             }
+        </td>
+    </tr>
+}
+
+</table>

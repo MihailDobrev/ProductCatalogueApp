@@ -1,0 +1,30 @@
+﻿@model Problend.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Изтриване на потребител";
+}
+
+<div class="container body-content span-8 offset-2">
+    <div class="well">
+        <h2>@ViewBag.Title</h2>
+
+        @using (Html.BeginForm("DeleteConfirmed", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            
+            <div class="form-group">
+                @Html.Label("email","Имейл", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-sm-4", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-4">
+                    @Html.ActionLink("Отказ", "List", "User", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Изтрий" class="btn btn-danger" />
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

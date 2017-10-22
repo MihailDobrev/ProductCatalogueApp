@@ -1,0 +1,32 @@
+﻿@model Problend.Models.Client
+
+@{
+    ViewBag.Title = "Изтриване на клиент";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Изтриване на клиент</h2>
+
+<h3>Сигурен ли си, че желаеш да изтриеш този клиент?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Изтрий" class="btn btn-default" /> |
+            @Html.ActionLink("Обратно към списъка", "Index")
+        </div>
+    }
+</div>

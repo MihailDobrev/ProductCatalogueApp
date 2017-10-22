@@ -1,0 +1,239 @@
+﻿@model Problend.Models.Product
+
+@{
+    ViewBag.Title = "Описание на всички продукти";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Описание на продукта:</h2>
+
+    <dl class="row">  
+        <dt class="col-sm-6  text-right">
+            1. @Html.DisplayNameFor(model => model.ProductNumber)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.ProductNumber)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           2. @Html.DisplayNameFor(model => model.ProductType)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.ProductType)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            3. @Html.DisplayNameFor(model => model.ProductBrand)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.ProductBrand)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           4. @Html.DisplayNameFor(model => model.Client.Name)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.Client.Name)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           5. @Html.DisplayNameFor(model => model.TypeOfUnit)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.TypeOfUnit)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           6. @Html.DisplayNameFor(model => model.NumberOfUnits)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.NumberOfUnits)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           7. @Html.DisplayNameFor(model => model.TypeOfPackage)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.TypeOfPackage)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           8. @Html.DisplayNameFor(model => model.NumberOfItemsInPackage)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.NumberOfItemsInPackage)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           9. @Html.DisplayNameFor(model => model.WeightInputedInPackage)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.WeightInputedInPackage)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           10. @Html.DisplayNameFor(model => model.RealPackageWeight)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.RealPackageWeight)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           11. @Html.DisplayNameFor(model => model.PaperType)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.PaperType)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+          12. @Html.DisplayNameFor(model => model.PackageSize)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.PackageSize)<br />
+        </dd>
+         
+        <dt class="col-sm-6  text-right">
+            13.  @Html.DisplayNameFor(model => model.MeasuredPackagingWeight)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.MeasuredPackagingWeight)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            14.  @Html.DisplayNameFor(model => model.NumberOfSticksMeasured)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.NumberOfSticksMeasured)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            15.  @Html.DisplayNameFor(model => model.GrossWeightUnit)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.GrossWeightUnit)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            16.  @Html.DisplayNameFor(model => model.PackagingUsedForUnit)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.PackagingUsedForUnit)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            17.  @Html.DisplayNameFor(model => model.PackagingUsedFor1000Pieces)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.PackagingUsedFor1000Pieces)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            18.  @Html.DisplayNameFor(model => model.RawMaterialUsedInUnit)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.RawMaterialUsedInUnit)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            19.  @Html.DisplayNameFor(model => model.GrossWeightOfUnit)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.GrossWeightOfUnit)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            20.  @Html.DisplayNameFor(model => model.GrossWeightCartonBox)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.GrossWeightCartonBox)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           21.  @Html.DisplayNameFor(model => model.PiecesOnEuropallet)
+        </dt>
+
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.PiecesOnEuropallet)<br />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            22. @Html.DisplayNameFor(model => model.PalletizationPicturePath)
+        </dt>
+
+        <dd class="col-sm-6">
+            <img src="~/Images/ProductPictures/@Model.PalletizationPicturePath" alt="" width="350" />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           23. @Html.DisplayNameFor(model => model.TransportationUnitPicturePath)
+        </dt>
+
+        <dd class="col-sm-6">
+            <img src="~/Images/ProductPictures/@Model.TransportationUnitPicturePath" alt="" width="350" />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+          24.  @Html.DisplayNameFor(model => model.TransportationUnitLabelPicturePath)
+        </dt>
+
+        <dd class="col-sm-6">
+            <img src="~/Images/ProductPictures/@Model.TransportationUnitLabelPicturePath" alt="" width="350" />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+          25.  @Html.DisplayNameFor(model => model.UnitLabelPicturePath)
+        </dt>
+
+        <dd class="col-sm-6">
+            <img src="~/Images/ProductPictures/@Model.UnitLabelPicturePath" alt="" width="350" />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+          26. @Html.DisplayNameFor(model => model.PackagePicturePath)
+        </dt>
+        <dd class="col-sm-6">
+            <img src="~/Images/ProductPictures/@Model.PackagePicturePath" alt="" width="350" />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+           27. @Html.DisplayNameFor(model => model.DisplayBoxPictureFront)
+        </dt>
+        <dd class="col-sm-6">
+            <img src="~/Images/ProductPictures/@Model.DisplayBoxPictureFront" alt="" width="350" />
+        </dd>
+
+        <dt class="col-sm-6  text-right">
+            28. @Html.DisplayNameFor(model => model.DisplayBoxPictureBack)
+        </dt>
+        <dd class="col-sm-6">
+            <img src="~/Images/ProductPictures/@Model.DisplayBoxPictureBack" alt="" width="350" />
+        </dd>
+                
+    </dl>
+<p class="text-center">
+    @Html.ActionLink("Обратно към списъка", "All") |
+    @if (User.IsInRole("Admin"))
+    {
+     @Html.ActionLink("Редактирай", "Edit", new { id = Model.Id }) 
+    }
+</p>

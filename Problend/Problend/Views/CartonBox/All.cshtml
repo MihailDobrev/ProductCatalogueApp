@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Problend.Models.CartonBox>
+
+@{
+    ViewBag.Title = "Всички кашони";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Всички кашони</h2>
+
+@if (User.IsInRole("Admin"))
+{
+<p>
+    @Html.ActionLink("Създай нов кашон", "Create")
+</p>
+}
+<table class="table text-left">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lenght)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Width)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lenght)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Width)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                @Html.ActionLink("Редактирай", "Edit", new { id = item.CartonBoxId })<span> | </span> @Html.ActionLink("Изтрий", "Delete", new { id = item.CartonBoxId })
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h2 class="text-center">Официални палетизации по кашони</h2>
+
+@foreach (var pic in Model.OrderBy(u => u.Name))
+{
+
+    <div class="well text-center">
+        <h4>@Html.DisplayFor(modelItem => pic.Name)</h4>
+        @foreach (var image in pic.PalletizationPictures)
+        {
+            string source = image.PictureName;
+            <img src="~/Images/PalletizationPictures/@source" width="355" />
+        }
+
+    </div>
+
+}
+
+
